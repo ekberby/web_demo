@@ -5,9 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Builder
@@ -17,8 +15,14 @@ import javax.persistence.Table;
 @Table(name ="rents")
 public class Rent {
     @Id
-    private int app_id;
-    private int renter_id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int rent_id;
+    @ManyToOne
+    @JoinColumn(name = "owner_username")
+    private User owner;
+    @OneToOne
+    @JoinColumn(name = "renter_username")
+    private User renter;
     private int end_month;
     private int end_year;
     private int start_month;

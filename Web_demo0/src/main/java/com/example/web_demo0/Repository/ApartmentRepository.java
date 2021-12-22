@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface ApartmentRepository extends CrudRepository<Apartment, Integer> {
     List<Apartment> findAll();
+
+    List<Apartment> findApartmentsByOwner_Username(String id);
 }

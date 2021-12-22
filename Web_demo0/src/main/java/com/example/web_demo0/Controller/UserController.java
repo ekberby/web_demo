@@ -1,17 +1,19 @@
 package com.example.web_demo0.Controller;
 
 import com.example.web_demo0.Model.Entity.User;
+import com.example.web_demo0.Model.Enum.Role;
+import com.example.web_demo0.Model.dto.UserDto;
 import com.example.web_demo0.Service.Impl.UserServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("users")
 @AllArgsConstructor
 public class UserController {
-
     private UserServiceImpl userService;
 
     @PostMapping("/")
@@ -20,8 +22,7 @@ public class UserController {
     }
 
     @GetMapping("/")
-    public List<User> get(){
+    public List<UserDto> get(){
         return userService.getAll();
     }
-
 }

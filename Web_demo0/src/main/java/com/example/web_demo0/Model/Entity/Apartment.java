@@ -1,15 +1,11 @@
 package com.example.web_demo0.Model.Entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-@Data
+@Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,7 +14,9 @@ import javax.persistence.Table;
 public class Apartment {
     @Id
     private int app_id;
-    private String owner_id;
+    @ManyToOne
+    @JoinColumn(name = "owner_username")
+    private User owner;
     private String address;
     private String description;
     private Double price_per_month;

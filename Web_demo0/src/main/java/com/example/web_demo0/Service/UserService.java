@@ -1,14 +1,15 @@
 package com.example.web_demo0.Service;
 
 import com.example.web_demo0.Model.Entity.User;
+import com.example.web_demo0.Model.dto.UserDto;
 
 import java.util.List;
 
 public interface UserService {
 
-    List<User> getAll();
+    List<UserDto> getAll();
 
     void create(User user);
 
-    User getById(String username);
+    UserDto getById(String username);
 }
