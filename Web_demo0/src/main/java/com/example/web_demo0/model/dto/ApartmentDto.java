@@ -7,8 +7,8 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ApartmentDto {
-    private String owner_username;
+    private String ownerUsername;
     private String address;
     private String description;
-    private Double price_per_month;
+    private Double pricePerMonth;
 }

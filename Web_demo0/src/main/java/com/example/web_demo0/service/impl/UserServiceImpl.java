@@ -1,4 +1,4 @@
-package com.example.web_demo0.service.Impl;
+package com.example.web_demo0.service.impl;
 
 import com.example.web_demo0.model.entity.User;
 import com.example.web_demo0.model.dto.UserDto;
@@ -17,15 +17,15 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
     public List<UserDto> getAll() {
-        return userRepository.findAll().stream().map(user -> mapToUserDto(user)).collect(Collectors.toList());
+        return userRepository.findAll().stream().map(this::mapToUserDto).collect(Collectors.toList());
     }
 
     public void create(User user) {
         userRepository.save(user);
     }
 
-    public UserDto getById(String username) {
-        return userRepository.findById(username).map(user -> mapToUserDto(user)).get();
+    public UserDto getById(String username){
+        return userRepository.findById(username).map(this::mapToUserDto).get();
     }
 
     private UserDto mapToUserDto(User user){

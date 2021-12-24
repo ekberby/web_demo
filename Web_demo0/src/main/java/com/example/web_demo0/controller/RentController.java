@@ -16,18 +16,18 @@ public class RentController {
 
     private final RentService rentService;
 
-    @PostMapping("/")
+    @PostMapping("")
     public void create(@RequestBody Rent rent) {
         rentService.create(rent);
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public List<RentDto> getAll() {
         return rentService.getAll();
     }
 
     @GetMapping("/renter")
-    public List<RentDto> getAllByRenter_id(Principal principal) {
-        return rentService.getByRenter_Id(principal.getName());
+    public List<RentDto> getAllByRenterId(Principal principal) {
+        return rentService.getByRenterId(principal.getName());
     }
 }

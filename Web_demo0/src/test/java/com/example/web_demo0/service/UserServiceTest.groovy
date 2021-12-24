@@ -4,7 +4,7 @@ import com.example.web_demo0.model.entity.User
 import com.example.web_demo0.model.enums.Role
 import com.example.web_demo0.model.dto.UserDto
 import com.example.web_demo0.repository.UserRepository
-import com.example.web_demo0.service.Impl.UserServiceImpl
+import com.example.web_demo0.service.impl.UserServiceImpl
 import spock.lang.Specification
 
 class UserServiceTest extends Specification {
@@ -12,9 +12,7 @@ class UserServiceTest extends Specification {
     private UserService userService = new UserServiceImpl(userRepository)
 
     def "test create - success"() {
-        given:
-        def user = User.builder().username("a").first_name("a").last_name("a")
-                .email("a").password("a").role(Role.LANDLORD).build()
+        def user = new User()
 
         when:
         userService.create(user)
@@ -24,7 +22,6 @@ class UserServiceTest extends Specification {
     }
 
     def "test getAll()"() {
-        given:
         def userDtoList = List.of(UserDto.builder().email("a").username("a").build())
         def userList = List.of(User.builder().email("a").username("a").build())
 
@@ -34,5 +31,19 @@ class UserServiceTest extends Specification {
         then:
         1 * userRepository.findAll() >> userList
         result == userDtoList
+    }
+
+    def "test getById"(){
+        def userDto = UserDto.builder().email("a").username("a").build()
+
+        Optional<UserDto> optional = Optional.of(User.builder().username("a").password("a").firstName("a")
+                .lastName("a").email("a").role(Role.LANDLORD).build())
+        when:
+
+        def result = userService.getById(optional.get().getUsername())
+
+        then:
+        1*userRepository.findById(optional.get().getUsername()) >> optional
+        result == userDto
     }
 }

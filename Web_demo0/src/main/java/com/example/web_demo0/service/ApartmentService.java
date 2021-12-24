@@ -9,7 +9,7 @@ public interface ApartmentService {
 
     List<ApartmentDto> getAll();
 
-    List<ApartmentDto> getAllByOwner_id(String id);
+    List<ApartmentDto> getAllByOwnerId(String id);
 
     void create(Apartment apartment);
 }

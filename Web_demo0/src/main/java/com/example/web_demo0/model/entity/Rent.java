@@ -16,15 +16,20 @@ import javax.persistence.*;
 public class Rent {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int rent_id;
+    @Column(name="rent_id")
+    private int rentId;
     @ManyToOne
     @JoinColumn(name = "owner_username")
     private User owner;
     @OneToOne
     @JoinColumn(name = "renter_username")
     private User renter;
-    private int end_month;
-    private int end_year;
-    private int start_month;
-    private int start_year;
+    @Column(name="end_month")
+    private int endMonth;
+    @Column(name="end_year")
+    private int endYear;
+    @Column(name="start_month")
+    private int startMonth;
+    @Column(name="start_year")
+    private int startYear;
 }

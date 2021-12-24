@@ -1,4 +1,4 @@
-package com.example.web_demo0.service.Impl;
+package com.example.web_demo0.service.impl;
 
 import com.example.web_demo0.model.entity.Apartment;
 import com.example.web_demo0.model.dto.ApartmentDto;
@@ -18,12 +18,12 @@ public class ApartmentServiceImpl implements ApartmentService {
 
     @Override
     public List<ApartmentDto> getAll() {
-        return apartmentRepository.findAll().stream().map(apartment -> mapToApartmentDto(apartment)).collect(Collectors.toList());
+        return apartmentRepository.findAll().stream().map(this::mapToApartmentDto).collect(Collectors.toList());
     }
 
     @Override
-    public List<ApartmentDto> getAllByOwner_id(String id) {
-        return apartmentRepository.findApartmentsByOwner_Username(id).stream().map(apartment -> mapToApartmentDto(apartment)).collect(Collectors.toList());
+    public List<ApartmentDto> getAllByOwnerId(String id) {
+        return apartmentRepository.findApartmentsByOwner_Username(id).stream().map(this::mapToApartmentDto).collect(Collectors.toList());
     }
 
     @Override
@@ -33,8 +33,7 @@ public class ApartmentServiceImpl implements ApartmentService {
 
     private ApartmentDto mapToApartmentDto(Apartment apartment){
         return ApartmentDto.builder().address(apartment.getAddress()).description(apartment.getDescription())
-                .owner_username(apartment.getOwner().getUsername())
-                .price_per_month(apartment.getPrice_per_month()).build();
+                .ownerUsername(apartment.getOwner().getUsername()).pricePerMonth(apartment.getPricePerMonth()).build();
     }
 
 }

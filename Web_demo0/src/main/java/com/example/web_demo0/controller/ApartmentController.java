@@ -18,23 +18,23 @@ public class ApartmentController {
     private final ApartmentService apartmentService;
     private final RentService rentService;
 
-    @PostMapping("/")
+    @PostMapping("")
     public void create(@RequestBody Apartment apartment) {
         apartmentService.create(apartment);
     }
 
     @GetMapping("/owner")
     public List<ApartmentDto> getAllByOwnerId(Principal principal) {
-        return apartmentService.getAllByOwner_id(principal.getName());
+        return apartmentService.getAllByOwnerId(principal.getName());
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public List<ApartmentDto> getAll() {
         return apartmentService.getAll();
     }
 
     @GetMapping("/owner/rents")
     public List<RentDto> getAllRents(Principal principal) {
-        return rentService.getByOwner_Id(principal.getName());
+        return rentService.getByOwnerId(principal.getName());
     }
 }

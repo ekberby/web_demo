@@ -11,8 +11,8 @@ public interface RentService {
 
     void create(Rent rent);
 
-    List<RentDto> getByOwner_Id(String id);
+    List<RentDto> getByOwnerId(String id);
 
-    List<RentDto> getByRenter_Id(String id);
+    List<RentDto> getByRenterId(String id);
 
 }

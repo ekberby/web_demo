@@ -13,11 +13,13 @@ import javax.persistence.*;
 @Table(name = "apartments")
 public class Apartment {
     @Id
-    private int app_id;
+    @Column(name="app_id")
+    private int appId;
     @ManyToOne
     @JoinColumn(name = "owner_username")
     private User owner;
     private String address;
     private String description;
-    private Double price_per_month;
+    @Column(name = "price_per_month")
+    private Double pricePerMonth;
 }

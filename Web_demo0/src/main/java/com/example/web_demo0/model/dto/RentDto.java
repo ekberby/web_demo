@@ -11,10 +11,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RentDto {
-    private String owner_username;
-    private String renter_username;
-    private int end_month;
-    private int end_year;
-    private int start_month;
-    private int start_year;
+    private String ownerUsername;
+    private String renterUsername;
+    private int endMonth;
+    private int endYear;
+    private int startMonth;
+    private int startYear;
 }
